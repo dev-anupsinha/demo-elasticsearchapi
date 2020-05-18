@@ -4,8 +4,7 @@ package com.tcgmetis.demotcgmetis.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcgmetis.demotcgmetis.document.ProfileDocument;
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.lucene.search.join.ScoreMode;
+
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetRequest;
@@ -35,7 +34,6 @@ import static com.tcgmetis.demotcgmetis.utils.Constants.INDEX;
 import static com.tcgmetis.demotcgmetis.utils.Constants.TYPE;
 
 @Service
-@Slf4j
 public class ProfileService {
 
 
