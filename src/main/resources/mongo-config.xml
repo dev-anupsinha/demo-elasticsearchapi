@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<bean id="mongoTemplate"
+  class="org.springframework.data.mongodb.core.MongoTemplate">
+    <constructor-arg name="mongo" ref="mongo"/>
+    <constructor-arg ref="mongoConverter" />
+    <constructor-arg name="databaseName" value="mydb"/>
+</bean>
+ 
+<mongo:mapping-converter id="mongoConverter" base-package="com.tcgmetis.demotcgmetis.converters">
+    <mongo:custom-converters base-package="com.tcgmetis.demotcgmetis.converters" />
+</mongo:mapping-converter>
+
+</configuration>
