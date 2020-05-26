@@ -31,7 +31,7 @@ public class DaasController {
 
 	private static final Logger daasCntrllogger = LoggerFactory.getLogger(DaasController.class);
 
-	@GetMapping("/empwithpet")
+	@GetMapping("/genericQueryForMysqlAndMongo")
 	public List<Map<String,Object>> getEmpdetailsWithPet(@Valid @RequestBody GenericQueryForDaas query) throws Exception {
 		
 		List<Map<String, Object>> getQueryResult = null;
@@ -43,16 +43,14 @@ public class DaasController {
 				getQueryResult=mongoDbService.fetchPetsData(query.getQuery());
 
 			} else if (query.getDatasource().equalsIgnoreCase("mysql")) {
-				daasCntrllogger.info("call MySql DB {}",query.getQuery().get("from"));				
+				daasCntrllogger.info("call MySql DB ");				
 				getQueryResult= mySqlDbService.getTableRecords(query.getQuery());
 
-			}else {
-				System.out.println("Entered datsource is not valid");
+			}else {				
 				throw new RuntimeException("Entered datsource is not valid");
 			}
 
-		} else {
-			System.out.println("datasource value is required");
+		} else {			
 			throw new RuntimeException("datasource value is required");
 			
 		}
