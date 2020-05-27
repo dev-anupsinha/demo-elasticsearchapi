@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcgmetis.demotcgmetis.exceptions.InvalidRequestException;
+import com.tcgmetis.demotcgmetis.exceptions.ResourceNotFoundException;
 import com.tcgmetis.demotcgmetis.models.GenericQueryForDaas;
 import com.tcgmetis.demotcgmetis.service.MongoDbService;
 import com.tcgmetis.demotcgmetis.service.MySqlDbService;
@@ -47,11 +49,11 @@ public class DaasController {
 				getQueryResult= mySqlDbService.getTableRecords(query.getQuery());
 
 			}else {				
-				throw new RuntimeException("Entered datsource is not valid");
+				throw new InvalidRequestException("Eneterd datasource is not allowd: "+ query.getDatasource().toString());
 			}
 
 		} else {			
-			throw new RuntimeException("datasource value is required");
+			throw new InvalidRequestException("Datasource value is required");
 			
 		}
 
